@@ -4,11 +4,12 @@ from tkinter import *
 hauteur,largeur=400,400
 def affichage(mot,longueur,angle,coos_depart):
     reset()
-    speed(0)
+    speed("fastest")
     ht()
     up()
     goto(coos_depart)
     down()
+    width(1)
     pile=[]
     for lettre in mot:
         if lettre=="A":
@@ -51,6 +52,8 @@ def remplace(iteration,mot,chaine1,regle1,chaine2,regle2):
 
     return mot
 
+#Aurait mérité d'utiliser une classe
+
 def dessin():
     choix=int(value.get())
     coos_depart=(0,0)
@@ -65,7 +68,6 @@ def dessin():
         longueur=5
         iteration=4
         coos_depart=(-200,-200)
-
     elif choix==2:
         mot="AdAdAdA"
         chaine1="A"
@@ -197,20 +199,9 @@ def dessin():
         regle2="A[gX]A[dX]AX"
         angle=25
         iteration=4
-    
-
-
-
-
-
-
-
-
-
 
     mot=remplace(iteration,mot,chaine1,regle,chaine2,regle2)
     affichage(mot,longueur,angle,coos_depart)
-
 
 
 fenetre=Tk()
@@ -262,17 +253,11 @@ Choix18.grid(row=9,column=1)
 Choix19.grid(row=10,column=1)
 Choix20.grid(row=11,column=1)
 
-
-
-
-
-
 Bouton1 = Button(fenetre,  text = 'Quitter',  command = fenetre.destroy)
 Bouton1.grid(row=0,column=1)
 
 scene = Screen()
 scene.setup(width=0.7, height=0.7, startx=-1, starty=0)
 exitonclick()
-
 
 fenetre.mainloop()
